@@ -143,3 +143,81 @@
     text-transform: uppercase;
   }
 }
+
+/* Media and typography practice extensions */
+@layer base {
+  :root {
+    --font-heading: var(--font-body);
+    --line-body: 1.6;
+    --line-heading: 1.2;
+    --step-4: clamp(2rem, 1.4rem + 2vw, 3rem);
+    --space-section: clamp(2rem, 5vw, 4rem);
+  }
+
+  body {
+    line-height: var(--line-body);
+    overflow-wrap: anywhere;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-heading);
+    line-height: var(--line-heading);
+  }
+
+  h1 {
+    font-size: var(--step-4);
+  }
+
+  h2 {
+    font-size: var(--step-2);
+  }
+
+  h3 {
+    font-size: 1.25rem;
+  }
+
+  p {
+    max-inline-size: var(--measure);
+  }
+
+  a {
+    color: var(--color-accent);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+}
+
+@layer layout {
+  .hero,
+  .section {
+    padding-block: var(--space-section);
+  }
+
+  .hero > *,
+  .card-grid > * {
+    min-inline-size: 0;
+  }
+}
+
+@layer components {
+  .hero-media img {
+    display: block;
+    inline-size: 100%;
+  }
+
+  .section-icon {
+    inline-size: 3rem;
+    block-size: 3rem;
+    flex-shrink: 0;
+  }
+
+  .media-check {
+    /* This is explanatory text, not an actual embedded player. */
+    margin-block-end: var(--space-8);
+  }
+}
